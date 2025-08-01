@@ -1,31 +1,52 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+// Arithmetic functions
+function add(a, b) {
+  return a + b;
 }
 
-#calculator-container {
-    text-align: center;
+function subtract(a, b) {
+  return a - b;
 }
 
-input[type="number"] {
-    margin: 10px;
-    padding: 10px;
-    width: 200px;
-    font-size: 16px;
+function multiply(a, b) {
+  return a * b;
 }
 
-button {
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 16px;
-    cursor: pointer;
+function divide(a, b) {
+  if (b === 0) {
+    return "Error: Division by zero";
+  }
+  return a / b;
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 20px;
+// Utility function to get input values
+function getInputs() {
+  const num1 = parseFloat(document.getElementById("number1").value) || 0;
+  const num2 = parseFloat(document.getElementById("number2").value) || 0;
+  return { num1, num2 };
 }
+
+// Display function
+function displayResult(value) {
+  document.getElementById("calculation-result").textContent = value;
+}
+
+// Event listeners
+document.getElementById("add").addEventListener("click", function () {
+  const { num1, num2 } = getInputs();
+  displayResult(add(num1, num2));
+});
+
+document.getElementById("subtract").addEventListener("click", function () {
+  const { num1, num2 } = getInputs();
+  displayResult(subtract(num1, num2));
+});
+
+document.getElementById("multiply").addEventListener("click", function () {
+  const { num1, num2 } = getInputs();
+  displayResult(multiply(num1, num2));
+});
+
+document.getElementById("divide").addEventListener("click", function () {
+  const { num1, num2 } = getInputs();
+  displayResult(divide(num1, num2));
+});
